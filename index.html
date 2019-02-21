@@ -3,17 +3,210 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <style>
+      #drag-file {
+        /*background-color: Highlight;*/
+        /*color:white;*/
+        text-align: center;
+        width:300px;
+        height:300px;
+      }
+      .drag-file {
+        /*background-color: Highlight;*/
+        /*color:white;*/
+        text-align: center;
+        width:300px;
+        height:300px;
+      }
+      .dorp-enter{
+        background-color:#E3F2FC;
+      }
+      .box0{
+        display: none;
+      }
+    </style>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="main-process/excel/excel-create.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <button onclick="createExcel($('.box1'))">생성</button>
+  <table border="1px; solid black" class="box0">
+    <tr>
+      <td>
+        공종
+      </td>
+      <td rowspan="6">
+        <div class="drag-file">
+          <!--<p>그림</p>-->
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        내용
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        주체
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text">
+      </td>
+    </tr>
+    </table>
+    <table border="1px; solid black" class="box1">
+      <tr>
+        <td>
+          공종
+        </td>
+        <td rowspan="6">
+          <div class="drag-file">
+            <!--<p>그림</p>-->
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          내용
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          주체
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+    </table>
+    <button onclick="createBox()">새 박스</button>
 
     <script>
       // You can also require other files to run in this process
-      require('./renderer.js')
+      require('./renderer.js');
+    </script>
+    <script>
+        function createBox(){
+
+            var cloneBox = $(".box0").clone(true, true);
+            cloneBox.attr("class", "box1");
+            $(".box1:last").after(cloneBox);
+        }
+        function createExcel(box){
+            initExcel(box);
+        }
+        (function () {
+            var box1 = $(".box1");
+            var imgBox = box1.find(".drag-file").css( "color", "blue" );
+
+            //imgBox
+            //console.log(imgBox);
+            $(".drag-file").on("drop", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                /*console.log(e);
+                console.log(e.originalEvent.dataTransfer.files);
+                console.log(event.target);*/
+                var myImage = $('<img/>');
+                /*for (var i = 0; i < e.originalEvent.dataTransfer.files; ++i) {
+                    console.log(e.originalEvent.dataTransfer.files[i].path);
+                }*/
+                myImage.attr('width', 300);
+                myImage.attr('height', 300);
+                myImage.attr('class', "groupMediaPhoto");
+                myImage.attr('src', e.originalEvent.dataTransfer.files[0].path);
+                //console.log(myImage);
+                myImage.appendTo($(event.target));
+                $(event.target).removeClass("dorp-enter");
+            });
+
+            $(".drag-file").on("dragleave", function(event) {
+                $(event.target).removeClass("dorp-enter");
+                return false;
+            });
+
+            $(".drag-file").on("dragend", function(event) {
+                return false;
+            });
+
+            $(".drag-file").on("dragover dragenter", function(event) {
+                $(event.target).addClass("dorp-enter");
+                return false;
+            });
+
+           /* window.ondrop = (e) => {
+                e.preventDefault();
+                //$('body').removeClass('file-hover');
+                console.log(e);
+                for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+                    console.log(e.dataTransfer.files[i].path);
+                }
+                return false;
+            };
+            window.ondragleave = function () {
+                $('body').removeClass('file-hover');
+                return false;
+            };
+            window.ondragover = () => {
+                return false;
+            };
+            window.ondragend = () => {
+                return false;
+            };*/
+            /*var holder = document.getElementById("drag-file");
+            holder.ondragover = () => {
+                return false;
+            };
+
+            holder.ondragleave = () => {
+                return false;
+            };
+
+            holder.ondragend = () => {
+                return false;
+            };*/
+
+            /*holder.ondrop = (e) => {
+                e.preventDefault();
+
+                for (let f of e.dataTransfer.files) {
+                    console.log('File(s) you dragged here: ', f.path);
+                    var img = document.createElement("IMG");
+                    img.src = f.path;
+                    img.width =  "300";
+                    img.height = "300";
+                    holder.appendChild(img);
+                }
+
+                return false;
+            };*/
+        })();
+        console.log("dddd");
     </script>
   </body>
 </html>
