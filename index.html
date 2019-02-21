@@ -24,6 +24,9 @@
       .box0{
         display: none;
       }
+      .box1{
+        margin-bottom: 20px;
+      }
     </style>
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="main-process/excel/excel-create.js"></script>
@@ -32,77 +35,87 @@
   <button onclick="createExcel($('.box1'))">생성</button>
   <table border="1px; solid black" class="box0">
     <tr>
-      <td>
-        공종
-      </td>
+      <td>공종</td>
       <td rowspan="6">
         <div class="drag-file">
           <!--<p>그림</p>-->
         </div>
       </td>
     </tr>
+    <tr><td><input type="text" class="gongjeong1"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong1"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position1"></td></tr>
     <tr>
-      <td>
-        <input type="text">
+      <td>공종</td>
+      <td rowspan="6">
+        <div class="drag-file">
+          <!--<p>그림</p>-->
+        </div>
       </td>
     </tr>
+    <tr><td><input type="text" class="gongjeong2"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong2"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position2"></td></tr>
     <tr>
-      <td>
-        내용
+      <td>공종</td>
+      <td rowspan="6">
+        <div class="drag-file">
+          <!--<p>그림</p>-->
+        </div>
       </td>
     </tr>
-    <tr>
-      <td>
-        <input type="text">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        주체
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <input type="text">
-      </td>
-    </tr>
+    <tr><td><input type="text" class="gongjeong3"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong3"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position3"></td></tr>
     </table>
     <table border="1px; solid black" class="box1">
       <tr>
-        <td>
-          공종
-        </td>
+        <td>공종</td>
         <td rowspan="6">
           <div class="drag-file">
-            <!--<p>그림</p>-->
+            <input type="hidden" class="drag-file-input">
           </div>
         </td>
       </tr>
+      <tr><td><input type="text" class="gongjeong1"></td></tr>
+      <tr><td>시공내용</td></tr>
+      <tr><td><input type="text" class="sigong1"></td></tr>
+      <tr><td>위치</td></tr>
+      <tr><td><input type="text" class="position1"></td></tr>
+      <!--중-->
       <tr>
-        <td>
-          <input type="text">
+        <td>공종</td>
+        <td rowspan="6">
+          <div class="drag-file">
+            <input type="hidden" class="drag-file-input">
+          </div>
         </td>
       </tr>
+      <tr><td><input type="text" class="gongjeong2"></td></tr>
+      <tr><td>시공내용</td></tr>
+      <tr><td><input type="text" class="sigong2"></td></tr>
+      <tr><td>위치</td></tr>
+      <tr><td><input type="text" class="position2"></td></tr>
+      <!--후-->
       <tr>
-        <td>
-          내용
+        <td>공종</td>
+        <td rowspan="6">
+          <div class="drag-file">
+            <input type="hidden" class="drag-file-input">
+          </div>
         </td>
       </tr>
-      <tr>
-        <td>
-          <input type="text">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          주체
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text">
-        </td>
-      </tr>
+      <tr><td><input type="text" class="gongjeong3"></td></tr>
+      <tr><td>시공내용</td></tr>
+      <tr><td><input type="text" class="sigong3"></td></tr>
+      <tr><td>위치</td></tr>
+      <tr><td><input type="text" class="position3"></td></tr>
     </table>
     <button onclick="createBox()">새 박스</button>
 
@@ -115,7 +128,11 @@
 
             var cloneBox = $(".box0").clone(true, true);
             cloneBox.attr("class", "box1");
+            var index = $(".box1").length+1;
+            var ptext = $('<p>'+Number(index)+'</p>');
+            //console.log(index);
             $(".box1:last").after(cloneBox);
+            $(".box1").eq(index-2).after(ptext);
         }
         function createExcel(box){
             initExcel(box);
@@ -140,6 +157,8 @@
                 myImage.attr('height', 300);
                 myImage.attr('class', "groupMediaPhoto");
                 myImage.attr('src', e.originalEvent.dataTransfer.files[0].path);
+                $(event.target).find('input').val(e.originalEvent.dataTransfer.files[0].path);
+
                 //console.log(myImage);
                 myImage.appendTo($(event.target));
                 $(event.target).removeClass("dorp-enter");
