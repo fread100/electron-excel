@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <style>
-      #drag-file {
-        /*background-color: Highlight;*/
-        /*color:white;*/
-        text-align: center;
-        width:300px;
-        height:300px;
-      }
-      .drag-file {
-        /*background-color: Highlight;*/
-        /*color:white;*/
-        text-align: center;
-        width:300px;
-        height:300px;
-      }
-      .dorp-enter{
-        background-color:#E3F2FC;
-      }
-      .box0{
-        display: none;
-      }
-      .box1{
-        margin-bottom: 20px;
-      }
+        #drag-file {
+            /*background-color: Highlight;*/
+            /*color:white;*/
+            text-align: center;
+            width:300px;
+            height:300px;
+        }
+        .drag-file {
+            /*background-color: Highlight;*/
+            /*color:white;*/
+            text-align: center;
+            width:300px;
+            height:300px;
+        }
+        .dorp-enter{
+            background-color:#E3F2FC;
+        }
+        .box0{
+            display: none;
+        }
+        .box1{
+            margin-bottom: 20px;
+        }
     </style>
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="main-process/excel/excel-create.js"></script>
-  </head>
-  <body>
-  <button onclick="createExcel($('.box1'))">생성</button>
-  <table border="1px; solid black" class="box0">
+</head>
+<body>
+<button onclick="createExcel($('.box1'))">생성</button>
+<table border="1px; solid black" class="box0">
     <tr>
-      <td>공종</td>
-      <td rowspan="6">
-        <div class="drag-file">
-          <!--<p>그림</p>-->
-        </div>
-      </td>
+        <td>공종</td>
+        <td rowspan="6">
+            <div class="drag-file">
+                <!--<p>그림</p>-->
+            </div>
+        </td>
     </tr>
     <tr><td><input type="text" class="gongjeong1"></td></tr>
     <tr><td>시공내용</td></tr>
@@ -48,12 +48,12 @@
     <tr><td>위치</td></tr>
     <tr><td><input type="text" class="position1"></td></tr>
     <tr>
-      <td>공종</td>
-      <td rowspan="6">
-        <div class="drag-file">
-          <!--<p>그림</p>-->
-        </div>
-      </td>
+        <td>공종</td>
+        <td rowspan="6">
+            <div class="drag-file">
+                <!--<p>그림</p>-->
+            </div>
+        </td>
     </tr>
     <tr><td><input type="text" class="gongjeong2"></td></tr>
     <tr><td>시공내용</td></tr>
@@ -61,171 +61,188 @@
     <tr><td>위치</td></tr>
     <tr><td><input type="text" class="position2"></td></tr>
     <tr>
-      <td>공종</td>
-      <td rowspan="6">
-        <div class="drag-file">
-          <!--<p>그림</p>-->
-        </div>
-      </td>
+        <td>공종</td>
+        <td rowspan="6">
+            <div class="drag-file">
+                <!--<p>그림</p>-->
+            </div>
+        </td>
     </tr>
     <tr><td><input type="text" class="gongjeong3"></td></tr>
     <tr><td>시공내용</td></tr>
     <tr><td><input type="text" class="sigong3"></td></tr>
     <tr><td>위치</td></tr>
     <tr><td><input type="text" class="position3"></td></tr>
-    </table>
-    <table border="1px; solid black" class="box1">
-      <tr>
+</table>
+<table border="1px; solid black" class="box1">
+    <tr>
         <td>공종</td>
         <td rowspan="6">
-          <div class="drag-file">
-            <input type="hidden" class="drag-file-input">
-          </div>
+            <div class="drag-file">
+                <input type="hidden" class="drag-file-input">
+            </div>
         </td>
-      </tr>
-      <tr><td><input type="text" class="gongjeong1"></td></tr>
-      <tr><td>시공내용</td></tr>
-      <tr><td><input type="text" class="sigong1"></td></tr>
-      <tr><td>위치</td></tr>
-      <tr><td><input type="text" class="position1"></td></tr>
-      <!--중-->
-      <tr>
+    </tr>
+    <tr><td><input type="text" class="gongjeong1"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong1"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position1"></td></tr>
+    <!--중-->
+    <tr>
         <td>공종</td>
         <td rowspan="6">
-          <div class="drag-file">
-            <input type="hidden" class="drag-file-input">
-          </div>
+            <div class="drag-file">
+                <input type="hidden" class="drag-file-input">
+            </div>
         </td>
-      </tr>
-      <tr><td><input type="text" class="gongjeong2"></td></tr>
-      <tr><td>시공내용</td></tr>
-      <tr><td><input type="text" class="sigong2"></td></tr>
-      <tr><td>위치</td></tr>
-      <tr><td><input type="text" class="position2"></td></tr>
-      <!--후-->
-      <tr>
+    </tr>
+    <tr><td><input type="text" class="gongjeong2"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong2"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position2"></td></tr>
+    <!--후-->
+    <tr>
         <td>공종</td>
         <td rowspan="6">
-          <div class="drag-file">
-            <input type="hidden" class="drag-file-input">
-          </div>
+            <div class="drag-file">
+                <input type="hidden" class="drag-file-input">
+            </div>
         </td>
-      </tr>
-      <tr><td><input type="text" class="gongjeong3"></td></tr>
-      <tr><td>시공내용</td></tr>
-      <tr><td><input type="text" class="sigong3"></td></tr>
-      <tr><td>위치</td></tr>
-      <tr><td><input type="text" class="position3"></td></tr>
-    </table>
-    <button onclick="createBox()">새 박스</button>
+    </tr>
+    <tr><td><input type="text" class="gongjeong3"></td></tr>
+    <tr><td>시공내용</td></tr>
+    <tr><td><input type="text" class="sigong3"></td></tr>
+    <tr><td>위치</td></tr>
+    <tr><td><input type="text" class="position3"></td></tr>
+</table>
+<button onclick="createBox()">새 박스</button>
 
-    <script>
-      // You can also require other files to run in this process
-      require('./renderer.js');
-    </script>
-    <script>
-        function createBox(){
+<script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+</script>
+<script>
+    function removeNewBox(e){
+        $(e).prev().remove();//번호삭제
+        $(e).next().remove();//테이블삭제
+        $(e).remove();//버튼 삭제
+    }
+    function createBox(){
 
-            var cloneBox = $(".box0").clone(true, true);
-            cloneBox.attr("class", "box1");
-            var index = $(".box1").length+1;
-            var ptext = $('<p>'+Number(index)+'</p>');
-            //console.log(index);
-            $(".box1:last").after(cloneBox);
-            $(".box1").eq(index-2).after(ptext);
-        }
-        function createExcel(box){
-            initExcel(box);
-        }
-        (function () {
-            var box1 = $(".box1");
-            var imgBox = box1.find(".drag-file").css( "color", "blue" );
+        var cloneBox = $(".box0").clone(true, true);
+        cloneBox.attr("class", "box1");
+        var index = $(".box1").length+1;
+        var ptext = $('<p style="display: inline-block">'+'  번호  : '+ Number(index)+'</p>');
+        var newbtn = $('<button/>',{
+            text: '삭제',
+            click: function(){removeNewBox(this);}
+        });
+        newbtn.attr('class' , index+"_btn");
+        //console.log(index);
+        $(".box1:last").after(cloneBox);
+        $(".box1").eq(index-2).after(newbtn);
+        $(".box1").eq(index-2).after(ptext);
+    }
+    function createExcel(box){
+        initExcel(box);
+    }
+    (function () {
+        var box1 = $(".box1");
+        var imgBox = box1.find(".drag-file").css( "color", "blue" );
 
-            //imgBox
-            //console.log(imgBox);
-            $(".drag-file").on("drop", function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                /*console.log(e);
-                console.log(e.originalEvent.dataTransfer.files);
-                console.log(event.target);*/
-                var myImage = $('<img/>');
-                /*for (var i = 0; i < e.originalEvent.dataTransfer.files; ++i) {
-                    console.log(e.originalEvent.dataTransfer.files[i].path);
-                }*/
-                myImage.attr('width', 300);
-                myImage.attr('height', 300);
-                myImage.attr('class', "groupMediaPhoto");
-                myImage.attr('src', e.originalEvent.dataTransfer.files[0].path);
-                $(event.target).find('input').val(e.originalEvent.dataTransfer.files[0].path);
+        //imgBox
+        //console.log(imgBox);
+        $(".drag-file").on("drop", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            /*console.log(e);
+            console.log(e.originalEvent.dataTransfer.files);
+            console.log(event.target);*/
+            var myImage = $('<img/>');
+            /*for (var i = 0; i < e.originalEvent.dataTransfer.files; ++i) {
+                console.log(e.originalEvent.dataTransfer.files[i].path);
+            }*/
+            myImage.attr('width', 300);
+            myImage.attr('height', 300);
+            myImage.attr('class', "groupMediaPhoto");
+            myImage.attr('src', e.originalEvent.dataTransfer.files[0].path);
+            $(event.target).find('input').val(e.originalEvent.dataTransfer.files[0].path);
 
-                //console.log(myImage);
-                myImage.appendTo($(event.target));
-                $(event.target).removeClass("dorp-enter");
-            });
+            //console.log(myImage);
+            myImage.appendTo($(event.target));
+            $(event.target).removeClass("dorp-enter");
+        });
 
-            $(".drag-file").on("dragleave", function(event) {
-                $(event.target).removeClass("dorp-enter");
-                return false;
-            });
+        $(".drag-file").on("dragleave", function(event) {
+            $(event.target).removeClass("dorp-enter");
+            return false;
+        });
 
-            $(".drag-file").on("dragend", function(event) {
-                return false;
-            });
+        $(".drag-file").on("dragend", function(event) {
+            return false;
+        });
 
-            $(".drag-file").on("dragover dragenter", function(event) {
-                $(event.target).addClass("dorp-enter");
-                return false;
-            });
+        $(".drag-file").on("dragover dragenter", function(event) {
+            $(event.target).addClass("dorp-enter");
+            return false;
+        });
 
-           /* window.ondrop = (e) => {
-                e.preventDefault();
-                //$('body').removeClass('file-hover');
-                console.log(e);
-                for (var i = 0; i < e.dataTransfer.files.length; ++i) {
-                    console.log(e.dataTransfer.files[i].path);
-                }
-                return false;
-            };
-            window.ondragleave = function () {
-                $('body').removeClass('file-hover');
-                return false;
-            };
-            window.ondragover = () => {
-                return false;
-            };
-            window.ondragend = () => {
-                return false;
-            };*/
-            /*var holder = document.getElementById("drag-file");
-            holder.ondragover = () => {
-                return false;
-            };
+        $(".drag-file").bind("dblclick", function(event){
+            if($(event.target)[0].className == "groupMediaPhoto"){
+                $(event.target).remove();
+            }
+        });
 
-            holder.ondragleave = () => {
-                return false;
-            };
+        /* window.ondrop = (e) => {
+             e.preventDefault();
+             //$('body').removeClass('file-hover');
+             console.log(e);
+             for (var i = 0; i < e.dataTransfer.files.length; ++i) {
+                 console.log(e.dataTransfer.files[i].path);
+             }
+             return false;
+         };
+         window.ondragleave = function () {
+             $('body').removeClass('file-hover');
+             return false;
+         };
+         window.ondragover = () => {
+             return false;
+         };
+         window.ondragend = () => {
+             return false;
+         };*/
+        /*var holder = document.getElementById("drag-file");
+        holder.ondragover = () => {
+            return false;
+        };
 
-            holder.ondragend = () => {
-                return false;
-            };*/
+        holder.ondragleave = () => {
+            return false;
+        };
 
-            /*holder.ondrop = (e) => {
-                e.preventDefault();
+        holder.ondragend = () => {
+            return false;
+        };*/
 
-                for (let f of e.dataTransfer.files) {
-                    console.log('File(s) you dragged here: ', f.path);
-                    var img = document.createElement("IMG");
-                    img.src = f.path;
-                    img.width =  "300";
-                    img.height = "300";
-                    holder.appendChild(img);
-                }
+        /*holder.ondrop = (e) => {
+            e.preventDefault();
 
-                return false;
-            };*/
-        })();
-        console.log("dddd");
-    </script>
-  </body>
+            for (let f of e.dataTransfer.files) {
+                console.log('File(s) you dragged here: ', f.path);
+                var img = document.createElement("IMG");
+                img.src = f.path;
+                img.width =  "300";
+                img.height = "300";
+                holder.appendChild(img);
+            }
+
+            return false;
+        };*/
+    })();
+    console.log("dddd");
+</script>
+</body>
 </html>

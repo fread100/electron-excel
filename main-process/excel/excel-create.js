@@ -130,17 +130,17 @@ function initExcel(box){
         var gongjeong1 = $(box[i]).find(".gongjeong1").val();
         var sigong1 = $(box[i]).find(".sigong1").val();
         var postion1 = $(box[i]).find(".position1").val();
-        var imgsrc1 = $(box[i]).find("input")[0].val();
+        var imgsrc1 = $(box[i]).find(".drag-file-input").eq(0).val();
 
         var gongjeong2 = $(box[i]).find(".gongjeong2").val();
         var sigong2 = $(box[i]).find(".sigong2").val();
         var postion2 = $(box[i]).find(".position2").val();
-        var imgsrc2 = $(box[i]).find("input")[1].val();
+        var imgsrc2 = $(box[i]).find(".drag-file-input").eq(1).val();
 
         var gongjeong3 = $(box[i]).find(".gongjeong3").val();
         var sigong3 = $(box[i]).find(".sigong3").val();
         var postion3 = $(box[i]).find(".position3").val();
-        var imgsrc3 = $(box[i]).find("input")[2].val();
+        var imgsrc3 = $(box[i]).find(".drag-file-input").eq(2).val();
 
         var cnt18 = 1;
         for(var j=0; j < 3; j++){
@@ -182,26 +182,73 @@ function initExcel(box){
         worksheet.cell((i*18)+1, 2, (i*18)+6, 2, true).style(all_style);
         worksheet.cell((i*18)+7, 2, (i*18)+12, 2, true).style(all_style);
         worksheet.cell((i*18)+13, 2, (i*18)+18, 2, true).style(all_style);
+        console.log("imgsrc1", imgsrc1);
+        console.log("imgsrc2", imgsrc2);
+        console.log("imgsrc3", imgsrc3);
+        if(imgsrc1){
+            worksheet.addImage({
+                path: imgsrc1,
+                type: 'picture',
+                position: {
+                    type: 'twoCellAnchor',
+                    from: {
+                        col: 2,
+                        colOff: 0,
+                        row: (i*18)+1,
+                        rowOff: 0,
+                    },
+                    to: {
+                        col: 3,
+                        colOff: 0,
+                        row: (i*18)+7,
+                        rowOff: 0,
+                    },
+                },
+            });
+        }
+        if(imgsrc2){
+            worksheet.addImage({
+                path: imgsrc2,
+                type: 'picture',
+                position: {
+                    type: 'twoCellAnchor',
+                    from: {
+                        col: 2,
+                        colOff: 0,
+                        row: (i*18)+7,
+                        rowOff: 0,
+                    },
+                    to: {
+                        col: 3,
+                        colOff: 0,
+                        row: (i*18)+13,
+                        rowOff: 0,
+                    },
+                },
+            });
+        }
+        if(imgsrc3){
+            worksheet.addImage({
+                path: imgsrc3,
+                type: 'picture',
+                position: {
+                    type: 'twoCellAnchor',
+                    from: {
+                        col: 2,
+                        colOff: 0,
+                        row: (i*18)+13,
+                        rowOff: 0,
+                    },
+                    to: {
+                        col: 3,
+                        colOff: 0,
+                        row: (i*18)+19,
+                        rowOff: 0,
+                    },
+                },
+            });
+        }
 
-        worksheet.addImage({
-            path: imgsrc1,
-            type: 'picture',
-            position: {
-                type: 'twoCellAnchor',
-                from: {
-                    col: 1,
-                    colOff: 0,
-                    row: 10,
-                    rowOff: 0,
-                },
-                to: {
-                    col: 4,
-                    colOff: 0,
-                    row: 13,
-                    rowOff: 0,
-                },
-            },
-        });
         //worksheet.setPrintArea(1, 1, (i*6)+6, 2);
     }
 
@@ -222,4 +269,5 @@ function initExcel(box){
     //worksheet.cell(3,1).bool(true).style(style).style({font: {size: 14}});
 
     workbook.write('Excel.xlsx');
+    alert("생성완료");
 }
