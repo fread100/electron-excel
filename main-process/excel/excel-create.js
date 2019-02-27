@@ -6,7 +6,7 @@ function initExcel(box){
     var workbook = new excel.Workbook();
     // Add Worksheets to the workbook
     var worksheet = workbook.addWorksheet('Sheet 1');
-    var worksheet2 = workbook.addWorksheet('Sheet 2');
+    //var worksheet2 = workbook.addWorksheet('Sheet 2');
     // Create a reusable style
     var top_style = workbook.createStyle({
         font: {
@@ -105,18 +105,39 @@ function initExcel(box){
         }
 
     });
-    var all_style = workbook.createStyle({
+    var bottom_top_style = workbook.createStyle({
         border: {
-            left: {
+            top: {
+                style: 'double'
+            },
+            bottom: {
+                style: 'double'
+            }
+        }
+    });
+    var bottom_top_style2 = workbook.createStyle({
+        border: {
+            top: {
                 style: 'double'
             },
             right: {
                 style: 'double'
             },
-            top: {
-                style: 'double'
-            },
             bottom: {
+                style: 'double'
+            }
+        }
+    });
+    var bottom_double_style = workbook.createStyle({
+        border: {
+            bottom: {
+                style: 'double'
+            }
+        }
+    });
+    var top_double_style = workbook.createStyle({
+        border: {
+            top: {
                 style: 'double'
             }
         }
@@ -127,6 +148,7 @@ function initExcel(box){
     for(var i=0; i<box.length; i++){
         //console.log(box[i]);
         //console.log($(box[i]).find(".sigong").val());
+        //입력된 값
         var gongjeong1 = $(box[i]).find(".gongjeong1").val();
         var sigong1 = $(box[i]).find(".sigong1").val();
         var postion1 = $(box[i]).find(".position1").val();
@@ -142,46 +164,74 @@ function initExcel(box){
         var postion3 = $(box[i]).find(".position3").val();
         var imgsrc3 = $(box[i]).find(".drag-file-input").eq(2).val();
 
+        //세로 칸크기
         var cnt18 = 1;
         for(var j=0; j < 3; j++){
-            worksheet.row(i*18+(cnt18++)).setHeight(32);
-            worksheet.row(i*18+(cnt18++)).setHeight(50);
-            worksheet.row(i*18+(cnt18++)).setHeight(32);
-            worksheet.row(i*18+(cnt18++)).setHeight(50);
-            worksheet.row(i*18+(cnt18++)).setHeight(32);
-            worksheet.row(i*18+(cnt18++)).setHeight(50);
+            worksheet.row(i*24+(cnt18++)).setHeight(2);
+            worksheet.row(i*24+(cnt18++)).setHeight(30);
+            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            worksheet.row(i*24+(cnt18++)).setHeight(30);
+            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            worksheet.row(i*24+(cnt18++)).setHeight(30);
+            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            //if(j == 2)
+            worksheet.row(i*24+(cnt18++)).setHeight(2);
         }
 
-
-        worksheet.column(1).setWidth(19);
-        //worksheet.row(2).setHeight(33);
-        worksheet.column(2).setWidth(60);
+        //가로 칸 크기
+        worksheet.column(1).setWidth(17);
+        worksheet.column(2).setWidth(0.2);
+        worksheet.column(3).setWidth(58);
+        worksheet.column(4).setWidth(0.2);
         cnt18 = 1;
+        //공종,시공내용,위치영역
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(top_style);
+        worksheet.cell(i*24+(cnt18),1, i*24+(cnt18+1),1 ,true).string('공종').style(top_style);
+        cnt18++;cnt18++;
+        worksheet.cell(i*24+(cnt18++),1).string(gongjeong1).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('시공내용').style(style);
+        worksheet.cell(i*24+(cnt18++),1).string(sigong1).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('위치').style(style);
+        worksheet.cell(i*24+(cnt18),1, i*24+(cnt18+1),1, true).string(postion1).style(inputStyle);
+        cnt18++;cnt18++;
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(bottom_inputStyle);
 
-        worksheet.cell(i*18+(cnt18++),1).string('공종').style(top_style);
-        worksheet.cell(i*18+(cnt18++),1).string(gongjeong1).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('시공내용').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(sigong1).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('위치').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(postion1).style(bottom_inputStyle);
 
-        worksheet.cell(i*18+(cnt18++),1).string('공종').style(top_style);
-        worksheet.cell(i*18+(cnt18++),1).string(gongjeong2).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('시공내용').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(sigong2).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('위치').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(postion2).style(bottom_inputStyle);
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(top_style);
+        worksheet.cell(i*24+(cnt18),1, i*24+(cnt18+1),1 ,true).string('공종').style(top_style);
+        cnt18++;cnt18++;
+        worksheet.cell(i*24+(cnt18++),1).string(gongjeong2).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('시공내용').style(style);
+        worksheet.cell(i*24+(cnt18++),1).string(sigong2).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('위치').style(style);
+        //worksheet.cell(i*20+(cnt18++),1).string(postion2).style(inputStyle);
+        worksheet.cell(i*24+(cnt18),1, i*24+(cnt18+1),1, true).string(postion2).style(inputStyle);
+        cnt18++;cnt18++;
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(bottom_inputStyle);
 
-        worksheet.cell(i*18+(cnt18++),1).string('공종').style(top_style);
-        worksheet.cell(i*18+(cnt18++),1).string(gongjeong3).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('시공내용').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(sigong3).style(inputStyle);
-        worksheet.cell(i*18+(cnt18++),1).string('위치').style(style);
-        worksheet.cell(i*18+(cnt18++),1).string(postion3).style(bottom_inputStyle);
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(top_style);
+        worksheet.cell(i*24+(cnt18),1, i*24+(cnt18+1),1 ,true).string('공종').style(top_style);
+        cnt18++;cnt18++;
+        worksheet.cell(i*24+(cnt18++),1).string(gongjeong3).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('시공내용').style(style);
+        worksheet.cell(i*24+(cnt18++),1).string(sigong3).style(inputStyle);
+        worksheet.cell(i*24+(cnt18++),1).string('위치').style(style);
+        worksheet.cell(i*24+(cnt18),1,i*24+(cnt18+1),1,true).string(postion3).style(bottom_inputStyle);
+        cnt18++;
+        //worksheet.cell(i*20+(cnt18++),1).string('').style(bottom_inputStyle);
 
-        worksheet.cell((i*18)+1, 2, (i*18)+6, 2, true).style(all_style);
-        worksheet.cell((i*18)+7, 2, (i*18)+12, 2, true).style(all_style);
-        worksheet.cell((i*18)+13, 2, (i*18)+18, 2, true).style(all_style);
+        //그림 넣고 빈공간을 위한 영역
+        worksheet.cell((i*24)+1, 2, (i*24)+24, 2, true).style(bottom_top_style); //공종, 그림 사이
+        worksheet.cell((i*24)+1, 4, (i*24)+24, 4, true).style(bottom_top_style2); //그림과 문서 오른쪽끝부분 사이
+        worksheet.cell((i*24)+1, 3).style(top_double_style); //그림에서 문서 윗부분
+        worksheet.cell((i*24)+24, 3).style(bottom_double_style); //그림에서 문서 아랫부분
+        worksheet.cell((i*24)+9, 3).style(top_double_style); //첫번째 그림, 두번째 그림 사이
+        worksheet.cell((i*24)+17, 3).style(top_double_style); //두번째 그림, 세번째 그림 사이
+
+        //그림영역
+        worksheet.cell((i*24)+2, 3, (i*24)+7, 3, true);
+        worksheet.cell((i*24)+10, 3, (i*24)+15, 3, true);
+        worksheet.cell((i*24)+18, 3, (i*24)+24, 3, true);
         console.log("imgsrc1", imgsrc1);
         console.log("imgsrc2", imgsrc2);
         console.log("imgsrc3", imgsrc3);
@@ -192,15 +242,15 @@ function initExcel(box){
                 position: {
                     type: 'twoCellAnchor',
                     from: {
-                        col: 2,
+                        col: 3,
                         colOff: 0,
-                        row: (i*18)+1,
+                        row: (i*24)+2,
                         rowOff: 0,
                     },
                     to: {
-                        col: 3,
+                        col: 4,
                         colOff: 0,
-                        row: (i*18)+7,
+                        row: (i*24)+8,
                         rowOff: 0,
                     },
                 },
@@ -213,15 +263,15 @@ function initExcel(box){
                 position: {
                     type: 'twoCellAnchor',
                     from: {
-                        col: 2,
+                        col: 3,
                         colOff: 0,
-                        row: (i*18)+7,
+                        row: (i*24)+10,
                         rowOff: 0,
                     },
                     to: {
-                        col: 3,
+                        col: 4,
                         colOff: 0,
-                        row: (i*18)+13,
+                        row: (i*24)+16,
                         rowOff: 0,
                     },
                 },
@@ -234,22 +284,22 @@ function initExcel(box){
                 position: {
                     type: 'twoCellAnchor',
                     from: {
-                        col: 2,
+                        col: 3,
                         colOff: 0,
-                        row: (i*18)+13,
+                        row: (i*24)+18,
                         rowOff: 0,
                     },
                     to: {
-                        col: 3,
+                        col: 4,
                         colOff: 0,
-                        row: (i*18)+19,
+                        row: (i*24)+24,
                         rowOff: 0,
                     },
                 },
             });
         }
 
-        //worksheet.setPrintArea(1, 1, (i*6)+6, 2);
+        worksheet.setPrintArea(1, 1, (i*6)+6);
     }
 
 
