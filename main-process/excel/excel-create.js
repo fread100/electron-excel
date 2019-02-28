@@ -169,13 +169,13 @@ function initExcel(box){
         for(var j=0; j < 3; j++){
             worksheet.row(i*24+(cnt18++)).setHeight(2);
             worksheet.row(i*24+(cnt18++)).setHeight(30);
-            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            worksheet.row(i*24+(cnt18++)).setHeight(49);
             worksheet.row(i*24+(cnt18++)).setHeight(30);
-            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            worksheet.row(i*24+(cnt18++)).setHeight(49);
             worksheet.row(i*24+(cnt18++)).setHeight(30);
-            worksheet.row(i*24+(cnt18++)).setHeight(48);
+            worksheet.row(i*24+(cnt18++)).setHeight(49);
             //if(j == 2)
-            worksheet.row(i*24+(cnt18++)).setHeight(2);
+            worksheet.row(i*24+(cnt18++)).setHeight(5.5);
         }
 
         //가로 칸 크기
@@ -299,9 +299,9 @@ function initExcel(box){
             });
         }
 
-        worksheet.setPrintArea(1, 1, (i*6)+6);
-    }
 
+    }
+    worksheet.setPrintArea(1, 1, ((box.length-1)*24)+24, 4);
 
 
 

@@ -30,101 +30,128 @@
     </style>
     <script>window.$ = window.jQuery = require('jquery');</script>
     <script src="main-process/excel/excel-create.js"></script>
+
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/nativize.css">
 </head>
 <body>
-<button onclick="createExcel($('.box1'))">생성</button>
-<table border="1px; solid black" class="box0">
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong1"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong1"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position1"></td></tr>
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong2"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong2"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position2"></td></tr>
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong3"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong3"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position3"></td></tr>
-</table>
-<table border="1px; solid black" class="box1">
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong1"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong1"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position1"></td></tr>
-    <!--중-->
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong2"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong2"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position2"></td></tr>
-    <!--후-->
-    <tr>
-        <td>공종</td>
-        <td rowspan="6">
-            <div class="drag-file">
-                <input type="hidden" class="drag-file-input">
-            </div>
-        </td>
-    </tr>
-    <tr><td><input type="text" class="gongjeong3"></td></tr>
-    <tr><td>시공내용</td></tr>
-    <tr><td><input type="text" class="sigong3"></td></tr>
-    <tr><td>위치</td></tr>
-    <tr><td><input type="text" class="position3"></td></tr>
-</table>
-<button onclick="createBox()">새 박스</button>
+<nav class="nav js-nav">
+    <header class="nav-header">
+        <h1 class="nav-title"><strong>사진첩</strong></h1>
+        <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
+    </header>
 
+    <div class="nav-item u-category-windows">
+        <h5 class="nav-category">
+            <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
+            사진첩
+        </h5>
+        <button type="button" data-section="windows" class="nav-button"><em>1</em>. 사진첩</button>
+
+    </div>
+</nav>
+<main class="content js-content">
+    <button onclick="createExcel($('.box1'))">생성</button>
+    <table border="1px; solid black" class="box0">
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong1"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong1"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position1"></td></tr>
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong2"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong2"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position2"></td></tr>
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong3"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong3"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position3"></td></tr>
+    </table>
+    <table border="1px; solid black" class="box1">
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong1"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong1"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position1"></td></tr>
+        <!--중-->
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong2"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong2"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position2"></td></tr>
+        <!--후-->
+        <tr>
+            <td>공종</td>
+            <td rowspan="6">
+                <div class="drag-file">
+                    <input type="hidden" class="drag-file-input">
+                </div>
+            </td>
+        </tr>
+        <tr><td><input type="text" class="gongjeong3"></td></tr>
+        <tr><td>시공내용</td></tr>
+        <tr><td><input type="text" class="sigong3"></td></tr>
+        <tr><td>위치</td></tr>
+        <tr><td><input type="text" class="position3"></td></tr>
+    </table>
+    <button onclick="createBox()">새 박스</button>
+</main>
 <script>
     // You can also require other files to run in this process
     require('./renderer.js');
 </script>
 <script>
     function removeNewBox(e){
+        //메뉴삭제
+        for(var i=0; i < $(".nav-button").length; i++){
+            if($(".nav-button").eq(i).text().replace(/[^0-9]/g, '') == $(e).attr('class').replace(/[^0-9]/g, '')){
+                $(".nav-button").eq(i).remove();
+            }
+        }
         $(e).prev().remove();//번호삭제
         $(e).next().remove();//테이블삭제
         $(e).remove();//버튼 삭제
@@ -140,7 +167,13 @@
             click: function(){removeNewBox(this);}
         });
         newbtn.attr('class' , index+"_btn");
-        //console.log(index);
+        //console.log("index",index);
+        //메뉴버튼 생성
+        var cloneMenuBtn = $(".nav-button").eq(0).clone(true,true);
+        var tempText = cloneMenuBtn.text().substring(1);
+        cloneMenuBtn.html("<em>"+ (index)+"</em>"+ tempText);
+        $(".nav-button").eq(index-2).after(cloneMenuBtn);
+        //생성된 박스 등록
         $(".box1:last").after(cloneBox);
         $(".box1").eq(index-2).after(newbtn);
         $(".box1").eq(index-2).after(ptext);
@@ -242,7 +275,8 @@
             return false;
         };*/
     })();
-    console.log("dddd");
+    //console.log("dddd");
 </script>
+
 </body>
 </html>
