@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>사진첩</title>
     <style>
         #drag-file {
             /*background-color: Highlight;*/
@@ -39,7 +39,7 @@
 <body>
 <nav class="nav js-nav">
     <header class="nav-header">
-        <h1 class="nav-title"><strong>사진첩</strong></h1>
+        <h1 class="nav-title"><strong>사진첩</strong> <button onclick="createBox()">새 사진첩</button><button onclick="createExcel($('.box1'))">엑셀생성</button> </h1>
         <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
     </header>
 
@@ -53,7 +53,6 @@
     </div>
 </nav>
 <main class="content js-content">
-    <button onclick="createExcel($('.box1'))">생성</button>
     <table border="1px; solid black" class="box0">
         <tr>
             <td>공종</td>
@@ -95,6 +94,7 @@
         <tr><td>위치</td></tr>
         <tr><td><input type="text" class="position3"></td></tr>
     </table>
+    <p style="display: inline-block">번호  : 1</p>
     <table border="1px; solid black" class="box1">
         <tr>
             <td>공종</td>
@@ -138,7 +138,7 @@
         <tr><td>위치</td></tr>
         <tr><td><input type="text" class="position3"></td></tr>
     </table>
-    <button onclick="createBox()">새 박스</button>
+
 </main>
 <script>
     // You can also require other files to run in this process
@@ -227,6 +227,15 @@
                 $(event.target).remove();
             }
         });
+        //메뉴 클릭시
+        $(".nav-button").on("click", function(event) {
+            var offsetTop = betterOffset(true,$(".box1").eq($(event.target).text().replace(/[^0-9]/g, '')-1), $(".js-content"));
+            offsetTop -= 40;
+            $(".js-content").animate({scrollTop:offsetTop},100);
+
+
+            //return false;
+        });
 
         /* window.ondrop = (e) => {
              e.preventDefault();
@@ -275,6 +284,39 @@
             return false;
         };*/
     })();
+    /*
+    function: betterOffset
+    hint: Allows you to calculate dynamic and static offset whether they are in a div container with overscroll or not.
+
+                name:           type:               option:         notes:
+    @param      s (static)      boolean             required        default: true | set false for dynamic
+    @param      e (element)     string or object    required
+    @param      v (viewer)      string or object    optional        If you leave this out, it will use $(window) by default. What I am calling the 'viewer' is the thing that scrolls (i.e. The element with "overflow-y:scroll;" style.).
+
+    @return                  numeric
+    */
+    function betterOffset(s, e, v) {
+        // Set Defaults
+        s = (typeof s == 'boolean') ? s : true;
+        e = (typeof e == 'object') ? e : $(e);
+        if (v != undefined) {v = (typeof v == 'object') ? v : $(v);} else {v = null;}
+
+        // Set Variables
+        var w = $(window),              // window object
+            wp = w.scrollTop(),         // window position
+            eo = e.offset().top;        // element offset
+        if (v) {
+            var vo = v.offset().top,    // viewer offset
+                vp = v.scrollTop();     // viewer position
+        }
+
+        // Calculate
+        if (s) {
+            return (v) ? (eo - vo) + vp : eo;
+        } else {
+            return (v) ? eo - vo : eo - wp;
+        }
+    }
     //console.log("dddd");
 </script>
 

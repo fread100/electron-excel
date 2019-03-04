@@ -182,7 +182,7 @@ function initExcel(box){
         worksheet.column(1).setWidth(17);
         worksheet.column(2).setWidth(0.2);
         worksheet.column(3).setWidth(58);
-        worksheet.column(4).setWidth(0.2);
+        worksheet.column(4).setWidth(0.3);
         cnt18 = 1;
         //공종,시공내용,위치영역
         //worksheet.cell(i*20+(cnt18++),1).string('').style(top_style);
